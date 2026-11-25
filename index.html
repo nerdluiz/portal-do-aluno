@@ -266,25 +266,8 @@
                     </div>
 
                     <div class="id-back-main">
-                      <div class="qr-box" aria-label="QR Code de validação">
-                        <svg viewBox="0 0 100 100" width="96" height="96" fill="#0f172a">
-                          <rect x="4" y="4" width="26" height="26" rx="3" fill="none" stroke="#0f172a" stroke-width="6"/>
-                          <rect x="12" y="12" width="10" height="10" rx="1"/>
-                          <rect x="70" y="4" width="26" height="26" rx="3" fill="none" stroke="#0f172a" stroke-width="6"/>
-                          <rect x="78" y="12" width="10" height="10" rx="1"/>
-                          <rect x="4" y="70" width="26" height="26" rx="3" fill="none" stroke="#0f172a" stroke-width="6"/>
-                          <rect x="12" y="78" width="10" height="10" rx="1"/>
-                          <rect x="38" y="6" width="6" height="6"/><rect x="50" y="6" width="6" height="12"/>
-                          <rect x="38" y="18" width="12" height="6"/><rect x="56" y="24" width="6" height="12"/>
-                          <rect x="6" y="38" width="12" height="6"/><rect x="24" y="38" width="6" height="18"/>
-                          <rect x="38" y="38" width="18" height="6"/><rect x="38" y="50" width="6" height="12"/>
-                          <rect x="50" y="44" width="12" height="12"/><rect x="68" y="38" width="12" height="6"/>
-                          <rect x="86" y="38" width="10" height="12"/><rect x="68" y="50" width="6" height="18"/>
-                          <rect x="80" y="56" width="16" height="6"/><rect x="38" y="68" width="12" height="6"/>
-                          <rect x="56" y="68" width="6" height="18"/><rect x="38" y="80" width="12" height="16"/>
-                          <rect x="68" y="74" width="12" height="6"/><rect x="86" y="68" width="10" height="12"/>
-                          <rect x="68" y="86" width="28" height="10"/>
-                        </svg>
+                      <div class="qr-box" aria-label="QR Code de acesso ao login do Portal do Aluno">
+                        <img src="assets/qr-login.svg" alt="QR Code para login no Portal do Aluno" />
                       </div>
                       <div class="id-back-details">
                         <div class="back-field">
@@ -490,28 +473,16 @@
       <div class="qr-modal-sub mono">RA 202408914 • Design Digital</div>
 
       <div class="qr-modal-code">
-        <svg viewBox="0 0 100 100" width="100%" height="100%" fill="#0f172a">
-          <rect x="4" y="4" width="26" height="26" rx="3" fill="none" stroke="#0f172a" stroke-width="6"/>
-          <rect x="12" y="12" width="10" height="10" rx="1"/>
-          <rect x="70" y="4" width="26" height="26" rx="3" fill="none" stroke="#0f172a" stroke-width="6"/>
-          <rect x="78" y="12" width="10" height="10" rx="1"/>
-          <rect x="4" y="70" width="26" height="26" rx="3" fill="none" stroke="#0f172a" stroke-width="6"/>
-          <rect x="12" y="78" width="10" height="10" rx="1"/>
-          <rect x="38" y="6" width="6" height="6"/><rect x="50" y="6" width="6" height="12"/>
-          <rect x="38" y="18" width="12" height="6"/><rect x="56" y="24" width="6" height="12"/>
-          <rect x="6" y="38" width="12" height="6"/><rect x="24" y="38" width="6" height="18"/>
-          <rect x="38" y="38" width="18" height="6"/><rect x="38" y="50" width="6" height="12"/>
-          <rect x="50" y="44" width="12" height="12"/><rect x="68" y="38" width="12" height="6"/>
-          <rect x="86" y="38" width="10" height="12"/><rect x="68" y="50" width="6" height="18"/>
-          <rect x="80" y="56" width="16" height="6"/><rect x="38" y="68" width="12" height="6"/>
-          <rect x="56" y="68" width="6" height="18"/><rect x="38" y="80" width="12" height="16"/>
-          <rect x="68" y="74" width="12" height="6"/><rect x="86" y="68" width="10" height="12"/>
-          <rect x="68" y="86" width="28" height="10"/>
-        </svg>
+        <a href="login.html" title="Abrir tela de login do Portal do Aluno">
+          <img src="assets/qr-login.svg" alt="QR Code para login no Portal do Aluno" />
+        </a>
       </div>
 
-      <p>Aproxime a tela do leitor óptico na catraca, biblioteca ou bilheteria.</p>
-      <button class="btn btn-primary btn-full" id="closeQrModalBtn">Fechar</button>
+      <p>Escaneie com a câmera para abrir a tela de login do Portal do Aluno ou aproxime do leitor óptico.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <a href="login.html" class="btn btn-secondary btn-full">Abrir tela de login</a>
+        <button class="btn btn-primary btn-full" id="closeQrModalBtn">Fechar</button>
+      </div>
     </div>
   </div>
 

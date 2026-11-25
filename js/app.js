@@ -34,10 +34,17 @@ document.getElementById("quickIdBtn").addEventListener("click", () => switchView
 /* =========================================================
    THEME TOGGLE
    ========================================================= */
+const savedTheme = localStorage.getItem("uninova-theme");
+if (savedTheme) {
+  document.documentElement.setAttribute("data-theme", savedTheme);
+}
+
 document.getElementById("themeToggle").addEventListener("click", () => {
   const html = document.documentElement;
   const isDark = html.getAttribute("data-theme") === "dark";
-  html.setAttribute("data-theme", isDark ? "light" : "dark");
+  const next = isDark ? "light" : "dark";
+  html.setAttribute("data-theme", next);
+  localStorage.setItem("uninova-theme", next);
   showToast(isDark ? "Tema claro ativado" : "Tema escuro ativado");
 });
 

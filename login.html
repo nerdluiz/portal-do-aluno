@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar • UniNova Portal do Aluno</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="login-page">
+  <div class="login-shell">
+    <!-- PAINEL INSTITUCIONAL -->
+    <aside class="login-brand-panel" aria-label="Informações institucionais">
+      <div class="login-brand-top">
+        <div class="brand-mark" aria-hidden="true">U</div>
+        <div class="login-brand-name">
+          <strong>UniNova</strong>
+          <span>Portal do Aluno</span>
+        </div>
+      </div>
+
+      <div class="login-brand-copy">
+        <span class="login-pill">
+          <span class="pulse-dot"></span>
+          Acesso Unificado • 2026.2
+        </span>
+        <h1>Sua vida acadêmica em um só lugar.</h1>
+        <p>Consulte sua carteirinha digital com QR Code, acompanhe frequência, notas e horários das aulas com rapidez.</p>
+
+        <ul class="login-highlights">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Carteirinha estudantil digital com validação offline
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Modo Catraca em alto contraste para acesso rápido
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Acompanhamento de notas, entregas e faltas em tempo real
+          </li>
+        </ul>
+      </div>
+
+      <div class="login-brand-footer">
+        <span>UniNova Centro Universitário</span>
+        <span class="mono">v2.6</span>
+      </div>
+    </aside>
+
+    <!-- ÁREA DO FORMULÁRIO -->
+    <main class="login-form-area">
+      <div class="login-topbar">
+        <div class="login-mobile-brand">
+          <div class="brand-mark" aria-hidden="true">U</div>
+          <strong>UniNova</strong>
+        </div>
+        <button class="btn-icon" id="loginThemeToggle" title="Alternar tema claro/escuro" aria-label="Alternar tema">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+
+      <div class="login-card">
+        <div class="login-card-header">
+          <h2>Entrar no Portal</h2>
+          <p>Informe seu RA ou e-mail institucional para continuar.</p>
+        </div>
+
+        <form id="loginForm" class="login-form" novalidate>
+          <div class="form-group">
+            <label for="loginUser">RA ou E-mail institucional</label>
+            <input
+              type="text"
+              id="loginUser"
+              name="user"
+              placeholder="Ex.: 202408914 ou aluno@uninova.edu.br"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <div class="form-label-row">
+              <label for="loginPass">Senha</label>
+              <button type="button" class="link-btn" id="forgotPassBtn">Esqueci minha senha</button>
+            </div>
+            <div class="input-password-wrap">
+              <input
+                type="password"
+                id="loginPass"
+                name="password"
+                placeholder="Digite sua senha"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="password-toggle" id="togglePassBtn" aria-label="Mostrar ou ocultar senha">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" checked />
+              <span>Manter conectado neste dispositivo</span>
+            </label>
+          </div>
+
+          <div class="login-error" id="loginError" role="alert" hidden></div>
+
+          <button type="submit" class="btn btn-primary btn-full login-submit">
+            Entrar no Portal
+          </button>
+
+          <div class="login-divider"><span>ou</span></div>
+
+          <button type="button" class="btn btn-secondary btn-full" id="demoLoginBtn">
+            Acessar com conta demonstração (RA 202408914)
+          </button>
+        </form>
+
+        <div class="login-security-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Acesso protegido • Validação via QR Code da Carteirinha</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const savedTheme = localStorage.getItem("uninova-theme");
+    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    document.getElementById("loginThemeToggle").addEventListener("click", () => {
+      const html = document.documentElement;
+      const next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("uninova-theme", next);
+      showToast(next === "dark" ? "Tema escuro ativado" : "Tema claro ativado");
+    });
+
+    const passInput = document.getElementById("loginPass");
+    document.getElementById("togglePassBtn").addEventListener("click", () => {
+      passInput.type = passInput.type === "password" ? "text" : "password";
+    });
+
+    document.getElementById("forgotPassBtn").addEventListener("click", () => {
+      showToast("Link de redefinição enviado para o e-mail institucional (simulação)");
+    });
+
+    const loginForm = document.getElementById("loginForm");
+    const loginError = document.getElementById("loginError");
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const user = document.getElementById("loginUser").value.trim();
+      const pass = passInput.value.trim();
+
+      if (!user || !pass) {
+        loginError.textContent = "Preencha seu RA/e-mail e sua senha para acessar o portal.";
+        loginError.hidden = false;
+        return;
+      }
+
+      loginError.hidden = true;
+      window.location.href = "index.html";
+    });
+
+    document.getElementById("demoLoginBtn").addEventListener("click", () => {
+      document.getElementById("loginUser").value = "202408914";
+      passInput.value = "••••••••";
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
